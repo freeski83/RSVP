@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GuestList from "./GuestList";
 import Counter from "./Counter";
+import Header from "./Header";
 
 class App extends Component {
   state = {
@@ -99,20 +100,11 @@ class App extends Component {
     const totalUnconfirmed = totalInvited - totalConfirmed;
     return (
       <div className="App">
-        <header>
-          <h1>RSVP</h1>
-          <form onSubmit={this.guestNameSubmit}>
-            <input
-              type="text"
-              value={this.state.pendingGuest}
-              placeholder="Invite Someone"
-              onChange={this.inputGuestName}
-            />
-            <button type="submit" name="submit" value="submit">
-              Submit
-            </button>
-          </form>
-        </header>
+        <Header
+          handleNameInput={this.inputGuestName}
+          handleGuestNameSubmit={this.guestNameSubmit}
+          pendingGuest={this.state.pendingGuest}
+        />
         <div className="main">
           <div>
             <h2>Invitees</h2>
